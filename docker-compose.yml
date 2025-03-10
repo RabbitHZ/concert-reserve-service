@@ -1,5 +1,7 @@
-version: '3'
+version: "3.8"
+
 services:
+  # MySQL 인스턴스 1
   mysql:
     image: mysql:8.0
     ports:
@@ -14,6 +16,7 @@ services:
     networks:
       - my-network
 
+  # MySQL 인스턴스 2
   mysql_2:
     image: mysql:8.0
     ports:
@@ -32,6 +35,7 @@ services:
     networks:
       - my-network
 
+  # Redis 인스턴스
   redis:
     image: redis:latest
     ports:
@@ -45,6 +49,7 @@ services:
     ports:
       - "6378:6378"
 
+  # Zookeeper (Kafka 의존)
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
@@ -58,6 +63,7 @@ services:
     ports:
       - "2181:2181"
 
+  # Kafka 클러스터 1
   kafka-cluster1:
     image: confluentinc/cp-kafka:latest
     container_name: kafka-cluster1
@@ -75,6 +81,7 @@ services:
       KAFKA_NUM_PARTITIONS: 3
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
 
+  # Kafka 클러스터 2
   kafka-cluster2:
     image: confluentinc/cp-kafka:latest
     container_name: kafka-cluster2
@@ -92,6 +99,7 @@ services:
       KAFKA_NUM_PARTITIONS: 3
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
 
+  # Kafka 클러스터 3
   kafka-cluster3:
     image: confluentinc/cp-kafka:latest
     container_name: kafka-cluster3
@@ -108,6 +116,47 @@ services:
       KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka-cluster1:29094,EXTERNAL://localhost:9094
       KAFKA_NUM_PARTITIONS: 3
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - --web.enable-remote-write-receiver
+      - --enable-feature=native-histograms
+      - --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - my-network
+
+  # Grafana
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana-provisioning:/etc/grafana/provisioning
+      - ./grafana-dashboard:/dashboard
+    depends_on:
+      - prometheus
+    networks:
+      - my-network
+
+  # Grafana K6
+  k6:
+    image: grafana/k6
+    volumes:
+      - ./k6-scripts:/scripts
+    command: run -o experimental-prometheus-rw /scripts/stress.js
+    environment:
+      - K6_PROMETHEUS_RW_SERVER_URL=http://prometheus:9090/api/v1/write
+      - K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - prometheus
+    networks:
+      - my-network
 
 networks:
   my-network:
