@@ -153,8 +153,8 @@ erDiagram
 ## 프로젝트 실행 방법 
 1. 프로젝트 클론
 ```
-git clone https://github.com/hwajinkim/consert-reserv-service.git
-cd consert-reserv-service
+git clone https://github.com/RabbitHZ/concert-reserve-service.git
+cd concert-reserve-service
 ```
 2. Docker Compose 실행
 ```
