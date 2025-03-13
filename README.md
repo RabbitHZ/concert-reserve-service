@@ -138,17 +138,17 @@ erDiagram
 ```
 
 ## API 문서 (Swagger)
-### Swagger: [API 명세서](https://github.com/hwajinkim/concert-reserve-service/blob/master/docs/API/API_%EB%AA%85%EC%84%B8.md)
+### Swagger: [API 명세서](https://github.com/RabbitHZ/concert-reserve-service/blob/master/docs/API/API_%EB%AA%85%EC%84%B8.md)
 ![swagger_초안](https://github.com/user-attachments/assets/66324070-b637-40cd-934b-8db6993eb919)
 
 
 ## 리팩토링 및 성능 개선
 
-- 동시성 제어 방식 분석: [분석 보고서](https://github.com/hwajinkim/concert-reserve-service/blob/feature/dev/docs/concurrency-controller/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%A0%9C%EC%96%B4_%EB%B6%84%EC%84%9D_%EB%B3%B4%EA%B3%A0%EC%84%9C.md)
-- Redis를 활용한 캐싱 최적화: [성능 최적화 보고서](https://github.com/hwajinkim/concert-reserve-service/blob/master/docs/redis-optimization/%EB%A0%88%EB%94%94%EC%8A%A4_%EC%84%B1%EB%8A%A5_%EC%B5%9C%EC%A0%81%ED%99%94.md)
-- DB Index 성능 개선: [DB 성능 개선 보고서](https://github.com/hwajinkim/concert-reserve-service/blob/STEP19/docs/index/DB_INDEX_%EC%BF%BC%EB%A6%AC_%EC%84%B1%EB%8A%A5_%EA%B0%9C%EC%84%A0_%EB%B3%B4%EA%B3%A0%EC%84%9C.md#db-index-%EC%BF%BC%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0-%EB%B3%B4%EA%B3%A0%EC%84%9C)
-- MSA 전환 및 트랜잭션 분리 설계: [MSA 보고서](https://github.com/hwajinkim/concert-reserve-service/blob/master/docs/msa/MSA_%EC%A0%84%ED%99%98_%EB%B0%8F_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98_%EB%B6%84%EB%A6%AC_%EB%B3%B4%EA%B3%A0%EC%84%9C.md)
-- 부하 테스트 및 장애 대응 전략: [K6 부하 테스트](https://github.com/hwajinkim/concert-reserve-service/blob/master/docs/k6/stress.md)
+- 동시성 제어 방식 분석: [분석 보고서](https://github.com/RabbitHZ/concert-reserve-service/blob/master/docs/concurrency-controll/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%A0%9C%EC%96%B4_%EB%B6%84%EC%84%9D_%EB%B3%B4%EA%B3%A0%EC%84%9C.md)
+- Redis를 활용한 캐싱 최적화: [성능 최적화 보고서](https://github.com/RabbitHZ/concert-reserve-service/blob/master/docs/redis-optimization/%EB%A0%88%EB%94%94%EC%8A%A4_%EC%84%B1%EB%8A%A5_%EC%B5%9C%EC%A0%81%ED%99%94.md)
+- DB Index 성능 개선: [DB 성능 개선 보고서](https://github.com/RabbitHZ/concert-reserve-service/blob/STEP19/docs/index/DB_INDEX_%EC%BF%BC%EB%A6%AC_%EC%84%B1%EB%8A%A5_%EA%B0%9C%EC%84%A0_%EB%B3%B4%EA%B3%A0%EC%84%9C.md#db-index-%EC%BF%BC%EB%A6%AC-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0-%EB%B3%B4%EA%B3%A0%EC%84%9C)
+- MSA 전환 및 트랜잭션 분리 설계: [MSA 보고서](https://github.com/RabbitHZ/concert-reserve-service/blob/master/docs/msa/MSA_%EC%A0%84%ED%99%98_%EB%B0%8F_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98_%EB%B6%84%EB%A6%AC_%EB%B3%B4%EA%B3%A0%EC%84%9C.md)
+- 부하 테스트 및 장애 대응 전략: [K6 부하 테스트](https://github.com/RabbitHZ/concert-reserve-service/blob/master/docs/k6/stress.md)
 
 ## 프로젝트 실행 방법 
 1. 프로젝트 클론
