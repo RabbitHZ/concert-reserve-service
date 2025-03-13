@@ -161,7 +161,6 @@ cd consert-reserv-service
 docker-compose up -d
 ```
 3. API 테스트
-- Swagger: http://localhost:8080/swagger-ui.html
 - Postman: Postman Collection
 
 
